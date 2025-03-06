@@ -16,7 +16,7 @@ function App() {
     };
 
     const charactersToDisplay = name
-        ? characters.filter((character) => character.name === name)
+        ? characters.filter((character) => character.name.toLowerCase().includes(name.toLowerCase()))
         : characters.slice(page * 5, 5 + page * 5);
 
     return (
