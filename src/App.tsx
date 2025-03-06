@@ -11,13 +11,17 @@ function App() {
         setPage((prevPage) => prevPage + 1);
     };
 
+    const decrementPage = () => {
+        setPage((prevPage) => prevPage - 1);
+    };
+
     const charactersToDisplay = name
         ? characters.filter((character) => character.name === name)
         : characters.slice(page * 5, 5 + page * 5);
 
     return (
         <>
-            <input value={name} onChange={(e) => setName(e.target.value)} />
+            <input placeholder="Enter the character's name" value={name} onChange={(e) => setName(e.target.value)} />
 
             {charactersToDisplay.length > 0 ? (
                 charactersToDisplay.map((character) => (
@@ -25,6 +29,10 @@ function App() {
                 ))
             ) : (
                 <p>No Character found, did you type the name correctly?</p>
+            )}
+
+            {!name && page != 0 && (
+                <button onClick={decrementPage}>Show Previous</button>
             )}
 
             {!name && page != 3 && (
