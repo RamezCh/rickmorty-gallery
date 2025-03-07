@@ -1,9 +1,8 @@
 import { useState } from "react";
-import response from "./RickAndMortyResponseData.tsx";
-import CharacterInfo from "./CharacterInfo.tsx";
+import CharacterGallery from "./components/CharacterGallery.tsx";
+import {characters} from "./RickAndMortyResponseData.tsx";
 
 function App() {
-    const characters = response.results;
     const [name, setName] = useState<string>("");
     const [page, setPage] = useState<number>(0);
 
@@ -24,9 +23,7 @@ function App() {
             <input placeholder="Enter the character's name" value={name} onChange={(e) => setName(e.target.value)} />
 
             {charactersToDisplay.length > 0 ? (
-                charactersToDisplay.map((character) => (
-                    <CharacterInfo key={character.id} {...character} />
-                ))
+                    <CharacterGallery characters={charactersToDisplay} />
             ) : (
                 <p>No Character found, did you type the name correctly?</p>
             )}
