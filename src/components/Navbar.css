@@ -1,0 +1,32 @@
+/* NavBar.css */
+.navbar {
+    padding: 1rem 2rem; /* Padding around the navbar */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.navbar-list {
+    list-style: none; /* Remove bullet points */
+    display: flex; /* Display links in a row */
+    gap: 1rem; /* Space between links */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+.navbar-link {
+    color: black; /* White text color */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.1rem; /* Slightly larger font size */
+    padding: 0.5rem 1rem; /* Padding around links */
+    border-radius: 4px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.navbar-link:hover {
+    color: white;
+    background-color: #555; /* Darker background on hover */
+}
+
+.navbar-link.active {
+    background-color: #007bff; /* Blue background for active link */
+    color: white; /* White text for active link */
+}
