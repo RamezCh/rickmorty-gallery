@@ -21,13 +21,6 @@ export default function CharacterDetailCard() {
             <p>Species: {character.species}</p>
             <p>Gender: {character.gender}</p>
             <p>Origin: {character.origin.name}</p>
-            <p>Location: {character.location.name}</p>
-            <h3>Episodes</h3>
-            <ul>
-                {character.episode.map((ep, index) => (
-                    <li key={index}>{ep}</li>
-                ))}
-            </ul>
         </div>
     );
 }

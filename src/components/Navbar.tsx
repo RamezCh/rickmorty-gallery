@@ -11,6 +11,9 @@ export default function Navbar() {
                 <NavLink to="/characters" className="navbar-link">
                     Characters
                 </NavLink>
+                <NavLink to="/add/character" className="navbar-link">
+                    Add Character
+                </NavLink>
             </div>
         </nav>
     );

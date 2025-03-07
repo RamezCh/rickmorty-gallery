@@ -1,6 +1,6 @@
+import "./CharacterGallery.css";
 import { Character } from "../types/RickAndMortyCharacter.ts";
 import CharacterCard from "./CharacterCard.tsx";
-import "./CharacterGallery.css";
 import { useState } from "react";
 
 type CharacterGalleryProps = {
@@ -45,7 +45,7 @@ export default function CharacterGallery(props: Readonly<CharacterGalleryProps>)
                 <button onClick={decrementPage}>Show Previous</button>
             )}
 
-            {!name && page !== 3 && (
+            {!name && page !== 4 && (
                 <button onClick={incrementPage}>Load More</button>
             )}
 
