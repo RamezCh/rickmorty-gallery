@@ -8,6 +8,10 @@
     gap: 10px;
 }
 
+.character-card:hover {
+    cursor: grabbing;
+}
+
 .character-card img {
     width: 100px;
     height: 100px;
