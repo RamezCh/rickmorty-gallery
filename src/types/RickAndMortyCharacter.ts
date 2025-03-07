@@ -5,6 +5,7 @@ export type Character = {
     species: string,
     gender: string,
     origin: Origin,
+    image: string
 }
 
 export type Origin = {

@@ -1,13 +1,16 @@
 import { useParams } from "react-router-dom";
-import { characters } from "../RickAndMortyResponseData.tsx";
 import { Character } from "../types/RickAndMortyCharacter.ts";
 
-export default function CharacterDetailCard() {
+type CharacterGalleryProps = {
+    characters: Character[];
+}
+
+export default function CharacterDetailCard(props: Readonly<CharacterGalleryProps>) {
     const params = useParams();
     const id: string | undefined = params.id;
 
 
-    const character: Character | undefined = characters.find(char => char.id.toString() === id);
+    const character: Character | undefined = props.characters.find(char => char.id.toString() === id);
 
     if (!character) {
         return <div>Character not found!</div>;

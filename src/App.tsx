@@ -20,7 +20,7 @@ function App() {
                 <Route path="/" element={<Home/>}/>
                 <Route path="/characters" element={<CharacterGallery characters={chars}/>} />
                 <Route path="/add/character" element={<AddCharacter addCharacter={addCharacter}/>} />
-                <Route path="/character/:id" element={<CharacterDetailCard/>} />
+                <Route path="/character/:id" element={<CharacterDetailCard characters={chars}/>} />
             </Routes>
         </>
     );
