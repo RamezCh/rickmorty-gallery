@@ -1,27 +1,21 @@
 import "./CharacterGallery.css";
 import { Character } from "../types/RickAndMortyCharacter.ts";
 import CharacterCard from "./CharacterCard.tsx";
-import { useState } from "react";
+import {MouseEventHandler, useState} from "react";
 
 type CharacterGalleryProps = {
     characters: Character[];
+    handleIncrement: MouseEventHandler<HTMLButtonElement>;
+    handleDecrement: MouseEventHandler<HTMLButtonElement>;
+    page: number;
 }
 
 export default function CharacterGallery(props: Readonly<CharacterGalleryProps>) {
     const [name, setName] = useState<string>("");
-    const [page, setPage] = useState<number>(0);
-
-    const incrementPage = () => {
-        setPage((prevPage) => prevPage + 1);
-    };
-
-    const decrementPage = () => {
-        setPage((prevPage) => prevPage - 1);
-    };
 
     const charactersToDisplay = name
         ? props.characters.filter((character) => character.name.toLowerCase().includes(name.toLowerCase()))
-        : props.characters.slice(page * 5, 5 + page * 5);
+        : props.characters;
 
     const cards = charactersToDisplay.map((character) => (
         <CharacterCard key={character.id} character={character} />
@@ -29,6 +23,7 @@ export default function CharacterGallery(props: Readonly<CharacterGalleryProps>)
 
     return (
         <div>
+            <label>Search:</label>
             <input
                 placeholder="Enter the character's name"
                 value={name}
@@ -41,13 +36,11 @@ export default function CharacterGallery(props: Readonly<CharacterGalleryProps>)
                 <p>No Character found, did you type the name correctly?</p>
             )}
 
-            {!name && page !== 0 && (
-                <button onClick={decrementPage}>Show Previous</button>
-            )}
+            {!name && <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", width: "88%", gap: "10px", marginTop: "20px" }}>
+                <button onClick={props.handleDecrement} disabled={props.page < 2}>Show Previous</button>
+                <button onClick={props.handleIncrement} disabled={props.page > 41}>Load More</button>
+            </div>}
 
-            {!name && page !== 4 && (
-                <button onClick={incrementPage}>Load More</button>
-            )}
 
             {name && <button onClick={() => setName("")}>Reset Search</button>}
         </div>
