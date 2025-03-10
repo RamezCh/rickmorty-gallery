@@ -23,8 +23,9 @@ export default function CharacterGallery(props: Readonly<CharacterGalleryProps>)
 
     return (
         <div>
-            <label>Search:</label>
+            <label>Search (If you can't find the character, try flipping through the page):</label>
             <input
+                style={{ marginLeft: "20px" }}
                 placeholder="Enter the character's name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
