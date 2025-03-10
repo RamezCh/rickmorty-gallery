@@ -11,9 +11,10 @@ import axios from "axios";
 function App() {
     const [chars, setCharacters] = useState<Character[]>([]);
     const [page, setPage] = useState<number>(1);
+    const [maxPage, setMaxPage] = useState<number>(42);
 
     const incrementPage = () => {
-        setPage((prevPage) => prevPage < 42 ? prevPage + 1 : prevPage);
+        setPage((prevPage) => prevPage < maxPage ? prevPage + 1 : prevPage);
     };
 
     const decrementPage = () => {
@@ -28,6 +29,7 @@ function App() {
          axios.get("https://rickandmortyapi.com/api/character/?page=" + page)
             .then( (response) => {
                 setCharacters(response.data.results);
+                setMaxPage(response.data.info.pages);
             })
              .catch( (err) => {
                  console.log(err);
@@ -39,7 +41,7 @@ function App() {
             <Navbar/>
             <Routes>
                 <Route path="/" element={<Home/>}/>
-                <Route path="/characters" element={<CharacterGallery characters={chars} handleDecrement={decrementPage} handleIncrement={incrementPage} page={page}/>} />
+                <Route path="/characters" element={<CharacterGallery characters={chars} handleDecrement={decrementPage} handleIncrement={incrementPage} page={page} maxPage={maxPage}/>} />
                 <Route path="/add/character" element={<AddCharacter addCharacter={addCharacter}/>} />
                 <Route path="/character/:id" element={<CharacterDetailCard characters={chars}/>} />
             </Routes>

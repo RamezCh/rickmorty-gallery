@@ -8,6 +8,7 @@ type CharacterGalleryProps = {
     handleIncrement: MouseEventHandler<HTMLButtonElement>;
     handleDecrement: MouseEventHandler<HTMLButtonElement>;
     page: number;
+    maxPage: number;
 }
 
 export default function CharacterGallery(props: Readonly<CharacterGalleryProps>) {
@@ -39,7 +40,7 @@ export default function CharacterGallery(props: Readonly<CharacterGalleryProps>)
 
             {!name && <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", width: "88%", gap: "10px", marginTop: "20px" }}>
                 <button onClick={props.handleDecrement} disabled={props.page < 2}>Show Previous</button>
-                <button onClick={props.handleIncrement} disabled={props.page > 41}>Load More</button>
+                <button onClick={props.handleIncrement} disabled={props.page > props.maxPage - 1}>Load More</button>
             </div>}
 
 
